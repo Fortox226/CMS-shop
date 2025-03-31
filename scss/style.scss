@@ -35,6 +35,8 @@ main{
     height: auto;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 2.5vh;
     .article{
         display: flex;
         width: 50vh;
@@ -42,6 +44,8 @@ main{
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+        border: 2px solid black;
+        border-radius: 12.5px;
         > h2{
             width: 100%;
             text-align: center;
@@ -51,6 +55,7 @@ main{
             text-align: center;
         }
         .content{
+            margin-top: 2vh;
             width: 100%;
             text-align: center;
         }
