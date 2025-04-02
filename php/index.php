@@ -1,22 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user_id'])) {
-    echo "<h1>Witaj, " . htmlspecialchars($_SESSION['username']) . "!</h1>";
 
-    if ($_SESSION['role'] == 'admin') {
-        echo "<p>Jesteś administratorem. Możesz zarządzać użytkownikami.</p>";
-    } elseif ($_SESSION['role'] == 'editor') {
-        echo "<p>Jesteś edytorem. Możesz dodawać i edytować artykuły.</p>";
-    } else {
-        echo "<p>Jesteś zwykłym użytkownikiem. Możesz przeglądać artykuły.</p>";
-    }
-
-    echo '<p><a href="logout.php">Wyloguj się</a></p>';
-} else {
-    echo "<h1>Witaj na stronie!</h1>";
-    echo "<p>Proszę się <a href='login.php'>zalogować</a> lub <a href='register.php'>zarejestrować</a>.</p>";
-}
 
 $conn = mysqli_connect('localhost', 'root', '', 'CMS');
 if(!$conn)
@@ -37,7 +22,30 @@ $conn->set_charset("utf8mb4");
 </head>
 <body>
     <header>
-        <h1>CMS</h1>
+        <div class="image">
+            <img src="../assets/cms.png" alt="" width="100px">
+        </div>
+<?php
+    if (isset($_SESSION['user_id'])) {
+        echo "<div class=\"user\">";
+        echo "<h1>Witaj, " . htmlspecialchars($_SESSION['username']) . "!</h1>";
+        echo "</div>";
+
+        if ($_SESSION['role'] == 'admin') {
+            echo "<p><a href='admin.php'>Admin panel</a></p>";
+        } elseif ($_SESSION['role'] == 'editor') {
+            echo "<div class=\"edit\"><p>Jesteś edytorem</p></div>";
+        } else {
+            echo "<div class\"edit\></div>";
+        }
+        echo '<div class="logout"><p><a href="logout.php">Wyloguj się</a></p></div>';
+    } else {
+        echo "<div class=\"user\">";
+        echo "<h1>Witaj na stronie!</h1>";
+        echo "</div>";
+        echo "<div class=\"logout\"><p>Proszę się <a href='login.php'>zalogować</a> lub <a href='register.php'>zarejestrować</a>.</p></div>";
+    }
+?>
     </header>
     <main>
         <?php
