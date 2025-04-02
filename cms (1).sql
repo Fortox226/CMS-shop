@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2025 at 11:34 AM
+-- Generation Time: Apr 02, 2025 at 09:52 AM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -61,7 +61,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`) VALUES
-(1, 'Marian', '$2y$10$bajBCpylz6X7mfgnBUweTehI4i9oLqcMiWVg7jQQpNYVtcUg3JA.2', 'admin', '2025-03-31 09:09:18');
+(1, 'Marian', '$2y$10$CKuS3Gz701YFzDztv6kFle5b1qwcJFpP.NaYuQW/v2lGrTripcIF2', 'admin', '2025-03-31 09:09:18'),
+(3, 'Filip', '$2y$10$0FF1gMVh7G7HUW0MTvqkNunD1ClMnoIB/oTZCHGZeUlc2v1Qyk29a', 'editor', '2025-04-02 07:44:14');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -94,7 +95,7 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
