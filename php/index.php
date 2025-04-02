@@ -32,9 +32,9 @@ $conn->set_charset("utf8mb4");
         echo "</div>";
 
         if ($_SESSION['role'] == 'admin') {
-            echo "<p><a href='admin.php'>Admin panel</a></p>";
+            echo "<div class=\"edit\"><a href='edit.php'>Edit Panel</a></div><div class='admin'><a href='admin.php'>Admin panel</a></div>";
         } elseif ($_SESSION['role'] == 'editor') {
-            echo "<div class=\"edit\"><p>Jesteś edytorem</p></div>";
+            echo "<div class=\"edit\"><a href='edit.php'>Edit Panel</a></div>";
         } else {
             echo "<div class\"edit\></div>";
         }
@@ -43,7 +43,7 @@ $conn->set_charset("utf8mb4");
         echo "<div class=\"user\">";
         echo "<h1>Witaj na stronie!</h1>";
         echo "</div>";
-        echo "<div class=\"logout\"><p>Proszę się <a href='login.php'>zalogować</a> lub <a href='register.php'>zarejestrować</a>.</p></div>";
+        echo "<div class=\"logout\"><p><a href='login.php'>Zaloguj się</a></p></div>";
     }
 ?>
     </header>
