@@ -50,9 +50,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logowanie</title>
+    <link rel="stylesheet" href="../css/stylel.css">
 </head>
 <body>
-    <h1>Logowanie</h1>
+
+    <main>
+        <div class="box">
+        <div class="img">
+            <img src="../assets/cms.png" alt="" width=90px>
+        </div>
+    <div class="login">
     <form action="login.php" method="POST">
         <label for="username">Nazwa użytkownika:</label><br>
         <input type="text" id="username" name="username" required><br><br>
@@ -64,5 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 
     <p>Nie masz konta? <a href="register.php">Zarejestruj się</a></p>
+    </div>
+</div>
+</main>
 </body>
 </html>

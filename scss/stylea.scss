@@ -27,6 +27,7 @@ header{
     height: 10vh;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 5px 5px gray ;
 }
 
 main{
@@ -37,6 +38,7 @@ main{
     align-items: center;
     flex-direction: column;
     gap: 2.5vh;
+    margin:  20px 0px 0px 0px;
     .users{
         display: flex;
         width: 50vh;
@@ -49,6 +51,7 @@ main{
         > h2{
             width: 100%;
             text-align: center;
+            justify-content: center;
         }
         > p{
             width: 100%;
