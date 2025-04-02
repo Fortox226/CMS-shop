@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $confirm_password = $_POST['confirm_password'];
 
         if ($password === $confirm_password) {
-            $conn = new mysqli('localhost', 'root', '', 'CMS');
+            include 'config.php';
 
             if ($conn->connect_error) {
                 die('Connection failed: ' .$conn->connect_error);

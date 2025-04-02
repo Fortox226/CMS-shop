@@ -1,5 +1,12 @@
 <?php
+session_start();
+
 include 'config.php';
+
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
+    echo "<h1>403 Forbidden</h1> Brak dostępu. Tylko administratorzy mają dostęp do tej strony.";
+    exit();
+}
 
 $result = $conn->query("SELECT * FROM users");
 ?>
@@ -11,6 +18,7 @@ $result = $conn->query("SELECT * FROM users");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Admina</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../css/stylea.css">
     <style>
         table { width: 100%; border-collapse: collapse; }
         th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
@@ -18,8 +26,13 @@ $result = $conn->query("SELECT * FROM users");
     </style>
 </head>
 <body>
+<header>
+    <h2>Lista użytkowników</h2>
+    <div class="back">
+        <a href="index.php">Strona główna</a>
+    </div>
+</header>
 
-<h2>Lista użytkowników</h2>
 <table>
     <tr>
         <th>ID</th>
