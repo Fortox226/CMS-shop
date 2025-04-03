@@ -49,28 +49,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <main>
-    <div class="box">
-    <div class="img">
-            <img src="../assets/cms.png" alt="" width=90px>
+        <div class="wrapper">
+            <form action="register.php" method="POST">
+                <h1>Zarejestruj się</h1>
+                <div class="input-box">
+                    <input type="text" id="username" name="username"
+                     placeholder="Username" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="password" name="password"
+                     placeholder="Password" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="confirm_password" name="confirm_password"
+                     placeholder="Repeat password" required>
+                </div>
+
+                <button type="submit" class="btn">Zarejestruj się</button>
+
+                <div class="register-link">
+                    <p>Masz już konto? <a href="login.php">Zaloguj się</a></p>
+                </div>
+            </form>
         </div>
-        <div class="login">
-    <form action="register.php" method="POST">
-        <label for="username">Nazwa użytkownika:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-
-        <label for="password">Hasło:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-
-        <label for="confirm_password">Potwierdź hasło:</label><br>
-        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
-
-        <button type="submit">Zarejestruj się</button>
-    </form>
-
-    <p>Masz już konto? <a href="login.php">Zaloguj się</a></p>
-</div>
-
-</div>
-</main>
+    </main>
 </body>
 </html>
