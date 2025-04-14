@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $title = $_POST['title'];
         $content = $_POST['content'];
         $date = $_POST['date'];
-
         
         $sql = "UPDATE article SET title='$title', content='$content', date='$date' WHERE id_article='$id_article'";
 
@@ -37,9 +36,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $title = $_POST['title'];
         $content = $_POST['content'];
         $date = $_POST['date'];
+        $imagePath = null;
 
+        if (isset($_FILES['header_image']) && $_FILES['header_image']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = 'uploads/';
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0777, true); // Tworzymy katalog jeśli nie istnieje
+            }
         
-        $sql = "INSERT INTO article (title, content, date) VALUES ('$title', '$content', '$date')";
+            $fileTmpPath = $_FILES['header_image']['tmp_name'];
+            $fileName = basename($_FILES['header_image']['name']);
+            $fileName = time() . '_' . $fileName; // dodajemy timestamp dla unikalności
+            $destPath = $uploadDir . $fileName;
+        
+            if (move_uploaded_file($fileTmpPath, $destPath)) {
+                $imagePath = $destPath;
+            } else {
+                echo "Błąd podczas przesyłania pliku.";
+            }
+        }
+        
+        $sql = "INSERT INTO article (title, content, date, header_image) VALUES ('$title', '$content', '$date', '$imagePath')";
 
         if ($conn->query($sql) === TRUE) {
             echo "Nowy artykuł został dodany!";
@@ -94,7 +111,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         
          <div class="formularz">
     <h2><?php echo isset($_GET['id']) ? 'Edytuj' : 'Dodaj'; ?> artykuł</h2>
-    <form action="edit.php<?php echo isset($id_article) ? '?id=' . $id_article : ''; ?>" method="post">
+    <form action="edit.php<?php echo isset($id_article) ? '?id=' . $id_article : ''; ?>" method="post" enctype="multipart/form-data">
         <?php if (isset($id_article)): ?>
             <input type="hidden" name="id_article" value="<?php echo $id_article; ?>">
         <?php endif; ?>
@@ -107,6 +124,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         
         <label for="date">Data artykułu:</label><br>
         <input type="date" id="date" name="date" value="<?php echo $date; ?>" required><br><br>
+        <input type="file" name="header_image" accept="image/*"><br><br>
         
         <input type="submit" value="<?php echo isset($id_article) ? 'Zaktualizuj' : 'Dodaj'; ?> artykuł">
     </form>
