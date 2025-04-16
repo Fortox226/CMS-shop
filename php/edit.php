@@ -95,13 +95,13 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Edytora</title>
+    <title>Edit Panel</title>
     <link rel="stylesheet" href="../css/style-edit.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
-       <h1>Panel Edytora</h1> 
+       <h1>Edit Panel</h1> 
        <div class="back">
             <a href="index.php">Strona główna</a>
        </div>

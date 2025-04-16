@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <div class="wrapper">
             <form action="register.php" method="POST">
-                <h1>Zarejestruj się</h1>
+                <h1>Register</h1>
                 <div class="input-box">
                     <input type="text" id="username" name="username"
                      placeholder="Username" required>
@@ -65,10 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                      placeholder="Repeat password" required>
                 </div>
 
-                <button type="submit" class="btn">Zarejestruj się</button>
+                <button type="submit" class="btn">Register</button>
 
                 <div class="register-link">
-                    <p>Masz już konto? <a href="login.php">Zaloguj się</a></p>
+                    <p>Already have account? <a href="login.php">Log in </a></p>
                 </div>
             </form>
         </div>
