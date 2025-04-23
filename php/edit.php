@@ -101,7 +101,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 </head>
 <body>
     <header>
-       <h1>Edit Panel</h1> 
+        <img src="../assets/cms.png" alt="" >
+        <h1>Edit Panel</h1> 
        <div class="back">
             <a href="index.php">Strona główna</a>
        </div>
@@ -110,17 +111,17 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     <main>
         
          <div class="formularz">
-    <h2><?php echo isset($_GET['id']) ? 'Edytuj' : 'Dodaj'; ?> artykuł</h2>
+    <h2><?php echo isset($_GET['id']) ? 'Edytuj' : 'Dodaj nowy '; ?> artykuł</h2>
     <form action="edit.php<?php echo isset($id_article) ? '?id=' . $id_article : ''; ?>" method="post" enctype="multipart/form-data">
         <?php if (isset($id_article)): ?>
             <input type="hidden" name="id_article" value="<?php echo $id_article; ?>">
         <?php endif; ?>
         
-        <label for="title">Tytuł artykułu:</label><br>
+        <label for="title"></label>
         <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($title); ?>" required><br><br>
         
-        <label for="content">Treść artykułu:</label><br>
-        <textarea id="content" name="content" rows="10" cols="30" required><?php echo htmlspecialchars($content); ?></textarea><br><br>
+        <label for="content"></label><br>
+        <textarea id="content" name="content" rows="10" cols="90" required><?php echo htmlspecialchars($content); ?></textarea><br><br>
         
         <label for="date">Data artykułu:</label><br>
         <input type="date" id="date" name="date" value="<?php echo $date; ?>" required><br><br>
@@ -131,8 +132,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 </div>
     </main>
 
-    <hr>
-
+            <div class="lista">
     <h2>Lista artykułów</h2>
     <?php
     
@@ -154,6 +154,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $conn->close();
     ?>
+    </div>
 <script>
     function deleteArticle(id) {
         if (confirm("Na pewno chcesz usunąć tego użytkownika?")) {

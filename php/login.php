@@ -60,12 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h1>Log in</h1>
                 <div class="input-box">
                     <input type="text" id="username" name="username"
-                     placeholder="Nazwa użytkownika" required>
+                     placeholder="username" required>
                     <i class="bx bxs-user"></i>
                 </div>
                 <div class="input-box">
                     <input type="password" id="password" name="password"
-                     placeholder="Hasło" required>
+                     placeholder="password" required>
                     <i class="bx bxs-lock-alt"></i>
                 </div>
 
