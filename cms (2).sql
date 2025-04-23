@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2025 at 09:52 AM
+-- Generation Time: Apr 23, 2025 at 09:01 AM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -31,16 +31,19 @@ CREATE TABLE `article` (
   `id_article` int(11) NOT NULL,
   `title` varchar(25) NOT NULL,
   `content` varchar(250) NOT NULL,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  `header_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `article`
 --
 
-INSERT INTO `article` (`id_article`, `title`, `content`, `date`) VALUES
-(1, 'Pierwszy artykuł', 'Treść pierwszego artykułu ', '2025-03-31'),
-(2, 'Drugi artykuł', ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur laboriosam, amet optio enim reiciendis nulla. Accusantium iure sapiente amet iste, deserunt provident laudantium sint iusto necessitatibus eum, facere dolorem eaque.', '2025-03-31');
+INSERT INTO `article` (`id_article`, `title`, `content`, `date`, `header_image`) VALUES
+(1, 'Pierwszy artykuł', 'cokolwiek', '2025-03-31', NULL),
+(2, 'Drugi artykuł', ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur laboriosam, amet optio enim reiciendis nulla. Accusantium iure sapiente amet iste, deserunt provident laudantium sint iusto necessitatibus eum, facere dolorem eaque.', '2025-03-31', NULL),
+(15, 'trzeci artykuł', 'test test test test test test test test test test test test test test test test test test test test test test', '2025-04-14', NULL),
+(16, 'Warszawa', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error qui voluptas repudiandae recusandae obcaecati nemo consequuntur!', '2025-04-14', 'uploads/1744622953_warszawa-budynki.jpg');
 
 -- --------------------------------------------------------
 
@@ -62,7 +65,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`) VALUES
 (1, 'Marian', '$2y$10$CKuS3Gz701YFzDztv6kFle5b1qwcJFpP.NaYuQW/v2lGrTripcIF2', 'admin', '2025-03-31 09:09:18'),
-(3, 'Filip', '$2y$10$0FF1gMVh7G7HUW0MTvqkNunD1ClMnoIB/oTZCHGZeUlc2v1Qyk29a', 'editor', '2025-04-02 07:44:14');
+(3, 'Filip', '$2y$10$0FF1gMVh7G7HUW0MTvqkNunD1ClMnoIB/oTZCHGZeUlc2v1Qyk29a', 'editor', '2025-04-02 07:44:14'),
+(4, 'Franciszek', '$2y$10$2g8nkCfpcuyEDyIU2TgAHeg6cUtuQQWc7zBTaDWvt7bRS3DEP2ry6', 'user', '2025-04-02 09:53:26');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -89,13 +93,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `article`
 --
 ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
