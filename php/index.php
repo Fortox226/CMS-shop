@@ -19,6 +19,8 @@ $conn->set_charset("utf8mb4");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cms user page</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
 <body>
     <header>
@@ -52,14 +54,11 @@ $conn->set_charset("utf8mb4");
             <div class="header-container" style="display:flex;justify-content:left; padding: 40px; box-sizing: border-box;">
 
                 <div class="header-content">
-                    <span>
-                        <h2>Our blog</h2>
-                    </span>
                     <div class="content-content">
-                        <h1>Lorem ipsum dolor sit amet</h1>
+                        <h1>Welcome to Our Article Hub!</h1>
                     </div>
                     <div class="small-text">
-                        <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error qui voluptas repudiandae recusandae obcaecati nemo consequuntur!</h2>
+                        <h2>Discover a variety of engaging articles on topics ranging from technology to lifestyle. Stay informed with the latest trends and expert insights. Start reading now!</h2>
                     </div>
                 </div>
             </div>
@@ -69,6 +68,21 @@ $conn->set_charset("utf8mb4");
     <main>
         <div class="latest">
             <h1>Latest Articles</h1>
+        </div>
+        <div class="kategorie">
+            <span>All</span>
+            <span>Technology</span>
+            <span>Health & Wellness</span>
+            <span>Lifestyle</span>
+            <span>Business & Finance</span>
+            <span>Travel & Adventure</span>
+            <span>
+                <div class="input-box">
+                    <i class="bx bxs-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+                
+            </span>
         </div>
         <?php
            $sql = "SELECT id_article, title, content, header_image, date FROM article ORDER BY date DESC";
@@ -81,9 +95,10 @@ $conn->set_charset("utf8mb4");
                    echo "<img src=\"" .  htmlspecialchars($row['header_image']) . "\" alt=\"" . htmlspecialchars($row['title']) . "\"/>";
                    echo "</div>";
                    echo "<h2>" . htmlspecialchars($row['title']) . "</h2>"; 
-                   echo "<p><strong>Data publikacji: </strong>" . date('d-m-Y', strtotime($row['date'])) . "</p>"; 
                    echo "<div class='content'>" . nl2br(htmlspecialchars($row['content'])) . "</div>"; 
-                   echo "</div><hr>";
+                   echo "<p><strong>Data publikacji: </strong>" . date('d-m-Y', strtotime($row['date'])) . "</p>";
+                   echo "<a href='article.php?id=" . $row['id_article'] . "' class='read-more'>Czytaj dalej..</a>";
+                   echo "</div>";
                }
            } else {
                echo "Brak artykułów w bazie danych.";
@@ -92,5 +107,48 @@ $conn->set_charset("utf8mb4");
            $conn->close();
         ?>
     </main>
+    <footer>
+        <div class="footer-info">
+            <div class="footer-up">
+                <div class="footer-left">
+                    <h3>
+                        CMS - Articles
+                    </h3>
+                </div>
+                <div class="footer-right">
+                    <box-icon type='logo' name='instagram'></box-icon> <box-icon type='logo' name='facebook'></box-icon> <box-icon name='pinterest' type='logo' ></box-icon> <box-icon name='twitter' type='logo' ></box-icon>
+                </div>
+                 
+            </div>
+            <div class="footer-down">
+                <p>© 2025 CMS  <a href="#">Terms</a>  <a href="#">Privacy</a>  <a href="#">Cookies</a></p>
+                
+            </div>
+        </div>
+    </footer>
 </body>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const articles = document.querySelectorAll(".article");
+
+  articles.forEach((article) => {
+    const content = article.querySelector(".content");
+
+    if (content) {
+      const fullText = content.textContent || content.innerText; 
+      const maxLength = 50; 
+
+      if (fullText.length > maxLength) {
+        const shortenedText = fullText.slice(0, maxLength) + "...";
+        content.textContent = shortenedText;
+
+        const readMore = article.querySelector(".read-more");
+        if (readMore) {
+          readMore.style.display = "inline-block";
+        }
+      }
+    }
+  });
+});
+</script>
 </html>
