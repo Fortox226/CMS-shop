@@ -40,12 +40,12 @@ $conn->set_charset("utf8mb4");
                          } else {
                              echo "<div class\"edit\></div>";
                          }
-                         echo '<div class="logout"><p><a href="logout.php">Wyloguj się</a></p></div>';
+                         echo '<div class="logout"><p><a href="logout.php">Logout</a></p></div>';
                      } else {
                          echo "<div class=\"user\">";
                          echo "<h1>Witaj na stronie!</h1>";
                          echo "</div>";
-                         echo "<div class=\"logout\"><p><a href='login.php'>Zaloguj się</a></p></div>";
+                         echo "<div class=\"logout\"><p><a href='login.php'>Log in</a></p></div>";
                      }
                  ?>
             </div>

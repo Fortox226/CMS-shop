@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logowanie</title>
+    <title>Log in</title>
     <link rel="stylesheet" href="../css/stylel.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <div class="wrapper">
             <form action="login.php" method="POST">
-                <h1>Zaloguj się</h1>
+                <h1>Log in</h1>
                 <div class="input-box">
                     <input type="text" id="username" name="username"
                      placeholder="Nazwa użytkownika" required>
@@ -69,10 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <i class="bx bxs-lock-alt"></i>
                 </div>
 
-                <button type="submit" class="btn">Zaloguj się</button>
+                <button type="submit" class="btn">Log in</button>
 
                 <div class="register-link">
-                    <p>Nie masz konta? <a href="register.php">Zarejestruj się</a></p>
+                    <p>don't have account? <a href="register.php">Register</a></p>
                 </div>
             </form>
         </div>
