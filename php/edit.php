@@ -127,37 +127,45 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <input type="date" id="date" name="date" value="<?php echo $date; ?>" required><br><br>
         <input type="file" name="header_image" accept="image/*"><br><br>
         
-        <input type="submit" value="<?php echo isset($id_article) ? 'Zaktualizuj' : 'Dodaj'; ?> artykuł">
+        <input type="submit" value="<?php echo isset($id_article) ? 'Zapisz zmiany' : 'Dodaj artykuł'; ?>">
     </form>
 </div>
-    </main>
+    
 
-            <div class="lista">
+    <div class="lista">
     <h2>Lista artykułów</h2>
     <?php
-    
-    $sql = "SELECT * FROM article";
-    $result = $conn->query($sql);
+$sql = "SELECT * FROM article";
+$result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        echo "<ul>";
-        while ($row = $result->fetch_assoc()) {
-            echo "<li data-id=\"$row[id_article]\">";
-            echo "ID: " . $row['id_article'] . " - Tytuł: " . $row['title'] . " - Data: " . $row['date'];
-            echo " <a href='edit.php?id=" . $row['id_article'] . "'>Edytuj</a> <button onclick=\"deleteArticle($row[id_article])\">Usuń</button>";
-            echo "</li>";
-        }
-        echo "</ul>";
-    } else {
-        echo "Brak artykułów.";
+if ($result->num_rows > 0) {
+    echo "<ul>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<li data-id=\"{$row['id_article']}\">";
+
+        echo "<div class='article-info'>";
+        echo "ID: {$row['id_article']} — Tytuł: {$row['title']} — Data: {$row['date']}";
+        echo "</div>";
+
+        echo "<div class='actions'>";
+        echo "<a href='edit.php?id={$row['id_article']}'>Edytuj</a>";
+        echo "<button onclick='deleteArticle({$row['id_article']})'>Usuń</button>";
+        echo "</div>";
+
+        echo "</li>";
     }
+    echo "</ul>";
+} else {
+    echo "Brak artykułów.";
+}
 
-    $conn->close();
-    ?>
+$conn->close();
+?>
     </div>
+</main>
 <script>
     function deleteArticle(id) {
-        if (confirm("Na pewno chcesz usunąć tego użytkownika?")) {
+        if (confirm("Na pewno chcesz usunąć ten artykuł?")) {
             $.post("Delete_article.php", { id: id }, function(response) {
                 if (response === "OK") {
                     $("li[data-id=" + id + "]").remove();
@@ -170,3 +178,4 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 </script>
 </body>
 </html>
+
