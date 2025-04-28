@@ -7,6 +7,17 @@
 
 a {
 	text-decoration: underline;
+    color: #2563eb;
+}
+
+h1{
+    color: #374151;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+h2{
+    color: #374151;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 body,
@@ -20,7 +31,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	overflow-x: hidden;
-	background-color: white;
+	background-color: #f9fafb;
 }
 header{
     display: flex;
@@ -31,7 +42,6 @@ header{
         display: flex;
         width: 95%;
         height: 100%;
-        // background-color: blue;
         justify-content: center;
         border-radius: 52px;
         margin-top: 20px;
@@ -53,29 +63,21 @@ header{
                 display: flex;
                 width: 55%;
                 >h1{
-                    color: rgb(153, 152, 152);
                     font-size: 40px;
                 }
             }
-            // .user{
-            //     display: flex;
-            //     width: 40%;
-            //     height: 100%;
-            //     justify-content: center;
-            //     align-items: center;
-            // }
             .edit{
                 display: flex;
                 width: 20%;
                 height: 100%;
                 justify-content: center;
                 align-items: center;
-                color: rgb(153, 152, 152);
+                color: #2563eb;
             }
             .admin{
                 display: flex;
                 width: 10%;
-                color: rgb(153, 152, 152);
+                color: #2563eb;
             }
             .logout{
                 display: flex;
@@ -83,7 +85,7 @@ header{
                 height: 100%;
                 justify-content: center;
                 align-items: center;
-                color: rgb(153, 152, 152);
+                color: #2563eb;
             }
         }
         .header-content{
@@ -97,8 +99,8 @@ header{
                 width: 100%;
                 height: auto;
                 font-size: 55px;
-                >h1{
-                    color: silver;
+                h1{
+                    color: #f9fafb;
                 }
             }
             .small-text{
@@ -106,8 +108,8 @@ header{
                 height: auto;
                 font-size: 15px;
                 >h2{
-                    color: silver;
                     font-weight: 100;
+                    color: #f9fafb;
                 }
             }
         }
@@ -132,8 +134,8 @@ main{
         align-items: center;
         padding-left: 350px;
         >h1{
-            color: rgb(153, 152, 152);
             font-size: 50px;
+            color: #111827;
         }
     }
     .kategorie{
@@ -151,6 +153,7 @@ main{
             width: auto;
             height: 40px;
             border-radius: 50px;
+            color: #2563eb;
             cursor: pointer;
             user-select: none;
             // background-color: red;
@@ -159,12 +162,14 @@ main{
                 position: relative;
                 width: 100%;
                 height: 100%;
+                color: #2563eb;
                 i{
                     position: absolute;
                     // left: 2px;
                     transform: translateY(70%);
                     // transform: translateX(-2%);
                     font-size: 15px;
+                    color: #2563eb;
                 }
                 input{
                     width: 100%;
@@ -175,8 +180,10 @@ main{
                     font-size: 16px;
                     box-sizing: border-box;
                     padding: 2px 4.5px 2px 20px;
+                    color: #2563eb;
                     &::placeholder{
                         margin-left: 10px;
+                        color: #2563eb;
                     }
                 }
             }
@@ -192,6 +199,8 @@ main{
         flex-wrap: wrap;
         border-radius: 12.5px;
         max-width: 50vh;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        background-color: #f9fafb;
         .article-image{
             display: flex;
             max-height: 60%;
@@ -212,16 +221,18 @@ main{
             // font-weight: 400;
             font-size: 30px;
             text-align: center;
+            color: #111827;
         }
         > p{
             width: 100%;
-            // text-align: center;
+            color: #374151;
         }
         .content{
             display: block;
             height: auto;
             overflow: hidden;
             position: relative;
+            color: #374151;
         }
 
         .read-more {
