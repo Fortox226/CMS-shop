@@ -5,9 +5,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id_article = $_GET['id'];
     
     
-    $sql = "SELECT * FROM article WHERE id_article = '$id_article'";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM article WHERE id_article = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id_article);
+    $stmt->execute();
 
+    $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $title = $row['title'];

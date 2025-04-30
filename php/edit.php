@@ -19,14 +19,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     if (isset($_POST['id_article']) && !empty($_POST['id_article'])) {
         
+        
+        $sql = "UPDATE article SET title = ?, content = ?, date = ? WHERE id_article = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('sssi', $title, $content, $date, $id_article);
+        
         $id_article = $_POST['id_article'];
         $title = $_POST['title'];
         $content = $_POST['content'];
         $date = $_POST['date'];
-        
-        $sql = "UPDATE article SET title='$title', content='$content', date='$date' WHERE id_article='$id_article'";
 
-        if ($conn->query($sql) === TRUE) {
+        // $stmt->store_result();
+
+        if ($stmt->execute()) {
             echo "Artykuł został zaktualizowany!";
         } else {
             echo "Błąd: " . $conn->error;
@@ -56,9 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
         
-        $sql = "INSERT INTO article (title, content, date, header_image) VALUES ('$title', '$content', '$date', '$imagePath')";
+        $sql = "INSERT INTO article (title, content, date, header_image) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('ssss', $title, $content, $date, $imagePath);
+        
 
-        if ($conn->query($sql) === TRUE) {
+        if ($stmt->execute() === TRUE) {
             echo "Nowy artykuł został dodany!";
         } else {
             echo "Błąd: " . $conn->error;
@@ -71,8 +79,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id_article = $_GET['id'];
     
     
-    $sql = "SELECT * FROM article WHERE id_article = '$id_article'";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM article WHERE id_article = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id_article);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
