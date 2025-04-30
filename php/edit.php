@@ -41,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_FILES['header_image']) && $_FILES['header_image']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = 'uploads/';
             if (!file_exists($uploadDir)) {
-                mkdir($uploadDir, 0777, true); // Tworzymy katalog jeśli nie istnieje
+                mkdir($uploadDir, 0777, true);
             }
         
             $fileTmpPath = $_FILES['header_image']['tmp_name'];
             $fileName = basename($_FILES['header_image']['name']);
-            $fileName = time() . '_' . $fileName; // dodajemy timestamp dla unikalności
+            $fileName = time() . '_' . $fileName;
             $destPath = $uploadDir . $fileName;
         
             if (move_uploaded_file($fileTmpPath, $destPath)) {

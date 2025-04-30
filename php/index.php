@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 
 $conn = mysqli_connect('localhost', 'root', '', 'CMS');
@@ -31,10 +33,6 @@ $conn->set_charset("utf8mb4");
                 </div>
                  <?php
                      if (isset($_SESSION['user_id'])) {
-                        //  echo "<div class=\"user\">";
-                        //  echo "<h1>Witaj, " . htmlspecialchars($_SESSION['username']) . "!</h1>";
-                        //  echo "</div>";
-                     
                          if ($_SESSION['role'] == 'admin') {
                              echo "<div class=\"edit\"><a href='edit.php'>Edit Panel</a></div><div class='admin'><a href='admin.php'>Admin panel</a></div>";
                          } elseif ($_SESSION['role'] == 'editor') {
