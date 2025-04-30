@@ -1,4 +1,4 @@
-#  CMS Articles – system zarządzania treścią
+#  CMS Articles 1.0 – system zarządzania treścią
 
 Lekki system CMS oparty na PHP do zarządzania artykułami. Umożliwia dodawanie, edytowanie, usuwanie oraz wyświetlanie treści, z możliwością logowania i rejestracji użytkowników.
 
@@ -51,7 +51,8 @@ Lekki system CMS oparty na PHP do zarządzania artykułami. Umożliwia dodawanie
 
 ##  Uwagi
 
-- Brak systemu routingu – każda strona to osobny plik PHP.
+- Brak systemu routingu – zostanie zaimplementowany w wersji 1.5 projektu.
+- Strona hostowana przez localhost - w wersji 2.0 zostanie dodany osobny host z włąsną domeną strony
 - Użytkownik porusza się po stronie przez konkretne ścieżki, np. `/login.php`, `/admin.php`, itd.
 - Stylowanie w SCSS → kompilowane do `css/`.
 
@@ -59,13 +60,13 @@ Lekki system CMS oparty na PHP do zarządzania artykułami. Umożliwia dodawanie
 
 ##  Licencja
 
-MIT – możesz dowolnie używać, kopiować, modyfikować.
+Apache 2.0 
 
 ---
 
 ##  Autor
 
-*Imię lub pseudonim autora projektu*
+Filip Zabrzewski, Jan Miepariszwili
 
 
 
